@@ -121,3 +121,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'test_without_migrations',
+        'debug_toolbar',
+        'django_extensions'
+    ]
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']

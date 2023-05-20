@@ -81,6 +81,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "django-extensions"
+version = "3.2.1"
+description = "Extensions for Django"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-filter"
 version = "23.2"
 description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
@@ -353,7 +364,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "b90974b6e04319dab817e02a6e5a232bd20a36ed9ebeca5a6d6d7eac0c2aae42"
+content-hash = "3c7ce4cdb8e7eecefc6146c16d4f0a5307b957d5ffd2ca60f1ab80fa9987430c"
 
 [metadata.files]
 appnope = [
@@ -386,6 +397,10 @@ django = [
 ]
 django-debug-toolbar-django13 = [
     {file = "django-debug-toolbar-django13-0.8.4.tar.gz", hash = "sha256:f526603b7ce5174c2f9f4df7aa49c394c2a1e47fd18db57d7e5cdc4f4a5c8cc8"},
+]
+django-extensions = [
+    {file = "django-extensions-3.2.1.tar.gz", hash = "sha256:2a4f4d757be2563cd1ff7cfdf2e57468f5f931cc88b23cf82ca75717aae504a4"},
+    {file = "django_extensions-3.2.1-py3-none-any.whl", hash = "sha256:421464be390289513f86cb5e18eb43e5dc1de8b4c27ba9faa3b91261b0d67e09"},
 ]
 django-filter = [
     {file = "django-filter-23.2.tar.gz", hash = "sha256:2fe15f78108475eda525692813205fa6f9e8c1caf1ae65daa5862d403c6dbf00"},
