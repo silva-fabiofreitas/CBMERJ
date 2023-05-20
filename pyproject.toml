@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "gbm"
+version = "0.1.0"
+description = "Cadastro e analise de dados de atendimentos do servico de emergencia"
+authors = ["fabio <fabio.freitas@les.inf.puc-rio.br>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.1"
+djangorestframework = "^3.14.0"
+python-decouple = "^3.8"
+django-filter = "^23.2"
+
+[tool.poetry.dev-dependencies]
+django-debug-toolbar-django13 = "^0.8.4"
+ipdb = "^0.13.13"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
