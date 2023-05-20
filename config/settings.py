@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'address'
 ]
 
 MIDDLEWARE = [
@@ -124,8 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if DEBUG:
     INSTALLED_APPS += [
-        'test_without_migrations',
         'debug_toolbar',
         'django_extensions'
     ]
-    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    # MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
