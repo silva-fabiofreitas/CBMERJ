@@ -18,13 +18,12 @@ class StateAdmin(admin.ModelAdmin):
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'state')
-    list_filter = ('state',)
+    list_display = ('id', 'name')
     search_fields = ('name',)
 
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
-    list_display = ('id', 'street', 'district', 'city')
+    list_display = ('id', 'street', 'district', 'city', 'state')
     list_filter = ('district', 'city')
     

@@ -1,17 +1,5 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, StringRelatedField, PrimaryKeyRelatedField, SlugRelatedField
 from address.models import Address, City, District, State
-
-
-class AddressSerializer(ModelSerializer):
-    class Meta:
-        model = Address
-        fields = ('id', 'street', 'district', 'city')
-
-
-class CitySerializer(ModelSerializer):
-    class Meta:
-        model = City
-        fields = ('id', 'name', 'state')
 
 
 class StateSerializer(ModelSerializer):
@@ -20,7 +8,26 @@ class StateSerializer(ModelSerializer):
         fields = ('id', 'name')
 
 
+class CitySerializer(ModelSerializer):
+    class Meta:
+        model = City
+        fields = ('id', 'name')
+
+
 class DistrictSerializer(ModelSerializer):
     class Meta:
         model = District
         fields = ('id', 'name')
+
+
+class AddressSerializer(ModelSerializer):
+    district = StringRelatedField()
+    city = SlugRelatedField(slug_field='name', read_only=True)
+    state = SlugRelatedField(slug_field='name', read_only=True)
+    
+    class Meta:
+        model = Address
+        fields = ('id', 'street', 'district', 'city', 'state')
+
+
+
