@@ -11,6 +11,10 @@ class District(models.Model):
 class State(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    @property
+    def full_name(self):
+        return f'{self.id} - {self.name}'
+
     def __str__(self):
         return self.name
 

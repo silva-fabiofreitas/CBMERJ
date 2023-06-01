@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.authentication import TokenAuthentication
 from address.models import Address, City, State, District
 from .serializers import AddressSerializer, CitySerializer, StateSerializer, DistrictSerializer
+from rest_framework.decorators import action
 
 
 class AddressViewSet(ModelViewSet):

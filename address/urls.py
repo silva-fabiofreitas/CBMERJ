@@ -14,7 +14,7 @@ router.register(r'cidade', viewset.CityViewSet)
 router.register(r'estado', viewset.StateViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
     path('api/api-token-auth/', obtain_auth_token),
     path('api/api-auth/', include('rest_framework.urls')),
     path('api/accounts/', include('django.contrib.auth.urls')),
