@@ -11,6 +11,7 @@ Django = "^4.2.1"
 djangorestframework = "^3.14.0"
 python-decouple = "^3.8"
 django-filter = "^23.2"
+django-cors-headers = "^4.0.0"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar-django13 = "^0.8.4"
