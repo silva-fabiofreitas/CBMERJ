@@ -8,6 +8,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 from epidemiological.api import viewset as viewset_epidemiological
 from address.api import viewset as viewset_address
+from event.api import viewset as viewset_event
 
 
 router = routers.DefaultRouter()
@@ -18,6 +19,11 @@ router.register(r'cidade', viewset_address.CityViewSet)
 router.register(r'estado', viewset_address.StateViewSet)
 
 router.register(r'perfil', viewset_epidemiological.ProfileViewSet)
+
+router.register(r'risco', viewset_event.RiskRatingViewSet)
+router.register(r'tipo-correncia', viewset_event.TypeOfOccurrenceViewSet)
+router.register(r'tipo-acidente-transito', viewset_event.TypeOfTrafficAccidentViewSet)
+router.register(r'tipo-unidade', viewset_event.UnitTypeViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

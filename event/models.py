@@ -6,11 +6,12 @@ from django.db import models
 class RiskRating(models.Model):
     "Modelo de classificação de risco"
     class Risk(models.TextChoices):
-        AZUL = 'Azul', 'Não Urgente'
-        VERDE = 'Verde', 'Pouco Urgente'
-        AMARELO = 'Amarelo', 'Urgente'
-        LARANJA = 'Laranja', 'Muito Urgente'
-        VERMELHO = 'Vermelho', 'Emergente'
+        "Enum"
+        AZUL = 'Não Urgente', 'Azul'
+        VERDE = 'Pouco Urgente', 'Verde'
+        AMARELO = 'Urgente', 'Amarelo'
+        LARANJA = 'Muito Urgente', 'Laranja'
+        VERMELHO = 'Emergente', 'Vermelho'
         OUTROS = 'Outros', 'Outros'
 
     rating = models.CharField(max_length=100, choices=Risk.choices)
@@ -19,12 +20,12 @@ class RiskRating(models.Model):
         return f'{self.rating}'
 
 
-class typeOfOccurrence(models.Model):
+class TypeOfOccurrence(models.Model):
     "Modelo de tipo de ocorrência EV CARACT"
     class Type(models.TextChoices):
-        ACIDENTE = 'Acidente e Violencia', 'Acidente E Violencia'
+        "Enum"
+        ACIDENTE = 'Acidente e Violencia', 'Acidente e Violencia'
         CLINICO = 'Clinico', 'Clinico'
-        N_PREENC = 'N.Preenc', 'N.Preenc'
         OBSTETRICO = 'Obstétrico', 'Obstétrico'
         OUTROS = 'Outros', 'Outros'
         PSIQUIATRICO = 'Psiquiatrico', 'Psiquiatrico'
@@ -39,11 +40,10 @@ class typeOfOccurrence(models.Model):
 class TypeOfTrafficAccident(models.Model):
     "Modelo de tipo de ocorrência AC TRANSP"
     class Type(models.TextChoices):
+        "Enum"
         ATROPELAMENTO = 'Atropelamento', 'Atropelamento'
         CAPOTAMENTO = 'Capotamento', 'Capotamento'
         COLISAO = 'Colisão', 'Colisão'
-        IGNORADO = 'Ignorado', 'Ignorado'
-        N_PREENC = 'N.Preenc', 'N.Preenc'
         OUTROS = 'Outros', 'Outros'
         QUEDA_BICICLETA = 'Queda Bicicleta', 'Queda Bicicleta'
         QUEDA_MOTO = 'Queda Moto', 'Queda Moto'
@@ -58,6 +58,7 @@ class TypeOfTrafficAccident(models.Model):
 class UnitType(models.Model):
     "Configuração da unidade de atendimento"
     class Type(models.TextChoices):
+        "Enum"
         ADVANCED = 'Avançada', 'Avançada'
         INTERMEDIATE = 'Intermediaria', 'Intermediaria'
         BASIC = 'Basica', 'Basica'

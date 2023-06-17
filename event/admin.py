@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import RiskRating, typeOfOccurrence, TypeOfTrafficAccident, UnitType
+from .models import RiskRating, TypeOfOccurrence, TypeOfTrafficAccident, UnitType
+
 
 @admin.register(RiskRating)
 class RiskRatingAdmin(admin.ModelAdmin):
@@ -9,7 +10,7 @@ class RiskRatingAdmin(admin.ModelAdmin):
     search_fields = ('id', 'rating')
 
 
-@admin.register(typeOfOccurrence)
+@admin.register(TypeOfOccurrence)
 class typeOfOccurrenceAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     search_fields = ('id', 'name')
