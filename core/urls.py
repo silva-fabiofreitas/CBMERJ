@@ -5,7 +5,7 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token 
 
 
-
+from core.api import viewset as viewset_core
 from epidemiological.api import viewset as viewset_epidemiological
 from address.api import viewset as viewset_address
 from event.api import viewset as viewset_event
@@ -24,6 +24,8 @@ router.register(r'risco', viewset_event.RiskRatingViewSet)
 router.register(r'tipo-correncia', viewset_event.TypeOfOccurrenceViewSet)
 router.register(r'tipo-acidente-transito', viewset_event.TypeOfTrafficAccidentViewSet)
 router.register(r'tipo-unidade', viewset_event.UnitTypeViewSet)
+
+router.register(r'registro-correncia', viewset_core.OcorrenceViewset)
 
 urlpatterns = [
     path('', include(router.urls)),

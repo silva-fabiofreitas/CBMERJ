@@ -9,12 +9,12 @@ from event.models import (
 
 class Occurrence(models.Model):
     date = models.DateTimeField()
-    address = models.ForeignKey(Address)
-    profile = models.ForeignKey(Profile)
-    risk = models.ForeignKey(RiskRating)
-    unit_type = models.ForeignKey(UnitType)
-    type_of_occurrence = models.ForeignKey(TypeOfOccurrence)
-    type_of_trafficaccident = models.ForeignKey(TypeOfTrafficAccident)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True)
+    profile = models.ForeignKey(Profile, on_delete=models.SET_NULL, blank=True, null=True)
+    risk = models.ForeignKey(RiskRating, on_delete=models.SET_NULL, blank=True, null=True)
+    unit_type = models.ForeignKey(UnitType, on_delete=models.SET_NULL, blank=True, null=True)
+    type_of_occurrence = models.ForeignKey(TypeOfOccurrence, on_delete=models.SET_NULL, blank=True, null=True)
+    type_of_trafficaccident = models.ForeignKey(TypeOfTrafficAccident, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self) -> str:
         return f'{self.date} - {self.risk}'
