@@ -19,6 +19,7 @@ router.register(r'cidade', viewset_address.CityViewSet)
 router.register(r'estado', viewset_address.StateViewSet)
 
 router.register(r'perfil', viewset_epidemiological.ProfileViewSet)
+router.register(r'gender', viewset_epidemiological.GenderViewSet)
 
 router.register(r'risco', viewset_event.RiskRatingViewSet)
 router.register(r'tipo-correncia', viewset_event.TypeOfOccurrenceViewSet)

@@ -14,7 +14,7 @@ class RiskRating(models.Model):
         VERMELHO = 'Emergente', 'Vermelho'
         OUTROS = 'Outros', 'Outros'
 
-    rating = models.CharField(max_length=100, choices=Risk.choices)
+    rating = models.CharField(max_length=100, choices=Risk.choices, unique=True)
 
     def __str__(self) -> str:
         return f'{self.rating}'
@@ -24,14 +24,14 @@ class TypeOfOccurrence(models.Model):
     "Modelo de tipo de ocorrência EV CARACT"
     class Type(models.TextChoices):
         "Enum"
-        ACIDENTE = 'Acidente e Violencia', 'Acidente e Violencia'
+        ACIDENTE = 'Acidente e Violencia', 'Acidente e Violência'
         CLINICO = 'Clinico', 'Clinico'
         OBSTETRICO = 'Obstétrico', 'Obstétrico'
-        OUTROS = 'Outros', 'Outros'
         PSIQUIATRICO = 'Psiquiatrico', 'Psiquiatrico'
+        OUTROS = 'Outros', 'Outros'
 
     name = models.CharField(
-        max_length=100, choices=Type.choices, blank=True, null=True)
+        max_length=100, choices=Type.choices, unique=True)
 
     def __str__(self) -> str:
         return f'{self.name}'
@@ -44,12 +44,12 @@ class TypeOfTrafficAccident(models.Model):
         ATROPELAMENTO = 'Atropelamento', 'Atropelamento'
         CAPOTAMENTO = 'Capotamento', 'Capotamento'
         COLISAO = 'Colisão', 'Colisão'
-        OUTROS = 'Outros', 'Outros'
         QUEDA_BICICLETA = 'Queda Bicicleta', 'Queda Bicicleta'
         QUEDA_MOTO = 'Queda Moto', 'Queda Moto'
+        OUTROS = 'Outros', 'Outros'
 
     name = models.CharField(
-        max_length=100, choices=Type.choices, blank=True, null=True)
+        max_length=100, choices=Type.choices, unique=True)
 
     def __str__(self) -> str:
         return f'{self.name}'
@@ -64,7 +64,7 @@ class UnitType(models.Model):
         BASIC = 'Basica', 'Basica'
 
     name = models.CharField(
-        max_length=100, choices=Type.choices, blank=True, null=True)
+        max_length=100, choices=Type.choices, unique=True)
 
     def __str__(self) -> str:
         return f'{self.name}'
