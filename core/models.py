@@ -15,6 +15,6 @@ class Occurrence(models.Model):
     unit_type = models.ForeignKey(UnitType, on_delete=models.SET_NULL, blank=True, null=True)
     type_of_occurrence = models.ForeignKey(TypeOfOccurrence, on_delete=models.SET_NULL, blank=True, null=True)
     type_of_traffic_accident = models.ForeignKey(TypeOfTrafficAccident, on_delete=models.SET_NULL, blank=True, null=True)
-
+    
     def __str__(self) -> str:
         return f'{self.date} - {self.risk}'

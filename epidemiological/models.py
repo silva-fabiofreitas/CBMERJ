@@ -4,8 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Gender(models.Model):
     class Type(models.TextChoices):
-        MALE = 'ME', _('Masculino')
-        FEMELE = 'FE', _('Feminino')
+        MALE = 'Masculino', _('Masculino')
+        FEMELE = 'Feminino', _('Feminino')
         
     name = models.CharField(max_length=255, choices=Type.choices)
 
