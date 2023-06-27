@@ -25,21 +25,11 @@ class Command(BaseCommand):
         if not path:
             path = 'data.xlsx'
 
-        self.df = pd.read_excel(path).query('MUNICIPIO=="CAMPOS DOS GOYTACAZES"')
+        self.df = pd.read_excel(path)
 
-         # Padronizar Risco
-        self.df['ESTRAT RISCO SOC'] = self.df['ESTRAT RISCO SOC'].replace(
-            {'AMARELA': 'Amarelo', 'VERDE': 'Verde', 'N.PREENC': None, 'AZUL': 'Azul', 'VERMELHA': 'Vermelho'})
-        # Remover espaço
-        var =  ['BAIRRO', 'MUNICIPIO', 'GENERO', 'ESTRAT RISCO SOC', 'EV CARACT', 'CONF SOC', 'AC TRANSP']
-        self.df[var] = self.df[var].applymap(lambda x: str(x).title().strip())
-        # Padronizar Genero
-        self.df['GENERO'] = self.df['GENERO'].replace(
-            {'Masc': 'Masculino', 'Fem': 'Feminino', 'N.Preenc': None, 'Ignorado': None})
-        self.df['EV CARACT'] = self.df['EV CARACT'].replace({'Acidente E Violencia': 'Acidente e Violencia' })
         self.df['IDADE'] = self.df['IDADE'].replace({np.nan:None})
     
-        # self.import_district()
+        self.import_district()
         start = time.time()
         self.import_register()      
 
@@ -51,6 +41,7 @@ class Command(BaseCommand):
         Occurrence.objects.all().delete()
         Address.objects.all().delete()
         Profile.objects.all().delete()
+        
 
 
 
@@ -121,8 +112,8 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Importação dos registros concluida.'))
 
     def import_district(self):
-        district = self.df['BAIRRO'].map(lambda v: str(v).title().strip())\
-            .unique()
+        District.objects.all().delete()
+        district = self.df['BAIRRO'].unique()
 
         obj = (District(name=name) for name in district)
         District.objects.bulk_create(obj, ignore_conflicts=True)
