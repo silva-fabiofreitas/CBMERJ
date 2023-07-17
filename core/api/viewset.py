@@ -23,7 +23,6 @@ class OcorrenceViewset(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ('profile__gender__name', 'risk', 'unit_type', 'type_of_occurrence', 'type_of_traffic_accident', 'date')
 
-
     @action(detail=False, methods=['get'])
     def get_pie_charts(self, request, pk=None):
         '''
@@ -36,7 +35,6 @@ class OcorrenceViewset(ModelViewSet):
         
         return Response(result, status=status.HTTP_200_OK)
 
-
     @action(detail=False, methods=['get'])
     def get_histogram_charts(self, request, pk=None):
         '''
@@ -48,4 +46,17 @@ class OcorrenceViewset(ModelViewSet):
         result = Dashboard.get_age()
         
         return Response(result, status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['get'])
+    def get_district_by_year(self, request, pk=None):
+        '''
+        Retorna a quantidade de ocorrencias por bairro estratificado por ano
+        '''
+        qs = self.filter_queryset(self.get_queryset())
+        Dashboard.setFilteredOccurrence(qs)
+        result = Dashboard.get_distric_by_year()
+        
+        return Response(result, status=status.HTTP_200_OK)
+    
+
       

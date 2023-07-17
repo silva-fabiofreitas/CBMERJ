@@ -1,0 +1,11 @@
+DEBUG=True
+SECRET_KEY=YOU_MUST_HIDE_THIS_KEY
+DATABASE_URL=postgres://postgres:postgres@db:5432/esdv
+EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+TEMPLATE_DEBUG=False
+EMAIL_HOST=localhost
+EMAIL_PORT=25
+EMAIL_USE_TLS=False
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+ALLOWED_HOSTS='*'

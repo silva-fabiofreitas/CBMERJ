@@ -1,4 +1,5 @@
-from django.db.models import Count, F
+from django.db.models import Count, F, OuterRef, Subquery, Window
+# from django.contrib.postgres.aggregates import ArrayAgg 
 
 from core.models import Occurrence
 
@@ -72,5 +73,16 @@ class Dashboard:
             .values('profile__age', 'profile__gender__name') \
             .annotate(value=Count('id')).order_by("profile__age")
 
+        return list(result)
+    
+    @staticmethod
+    def get_distric_by_year():
+        result =Dashboard.qs.exclude(address__district__isnull=True) \
+            .values('date__year', 'address__district__name') \
+            .annotate(value=Count('id')).order_by("date__year")
+        
+            
+        import ipdb; ipdb.set_trace()
+                     
         return list(result)
 
