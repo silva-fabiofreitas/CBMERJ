@@ -80,9 +80,6 @@ class Dashboard:
         result =Dashboard.qs.exclude(address__district__isnull=True) \
             .values('date__year', 'address__district__name') \
             .annotate(value=Count('id')).order_by("date__year")
-        
-            
-        import ipdb; ipdb.set_trace()
-                     
+                             
         return list(result)
 
